@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Fixture;
+namespace App\Infrastructure\Repository;
 
 use App\Domain\FixtureRepositoryInterface;
 use App\Infrastructure\HttpClient\HttpClientInterface;
