@@ -60,6 +60,35 @@ class HttpClientResourceRepository implements ResourceRepositoryInterface
         );
     }
 
+    public function put(string $name, array $payload)
+    {
+        $url = sprintf('%s/%s', $this->config->getUrl(), $name);
+
+        return $this->httpClient->put(
+            $url,
+            [
+                'Accept: application/json',
+                'Content-Type: application/json',
+                sprintf('Authorization: Basic %s', self::encodeAuth($this->config->getAuth())),
+            ],
+            $payload
+        );
+    }
+
+    /**
+     * @param string $name
+     * @return array
+     */
+    public function delete(string $name)
+    {
+        $url = sprintf('%s/%s', $this->config->getUrl(), $name);
+
+        return $this->httpClient->delete($url, [
+            'Accept: application/json',
+            sprintf('Authorization: Basic %s', self::encodeAuth($this->config->getAuth())),
+        ]);
+    }
+
     /**
      * @param array $auth
      * @return string
