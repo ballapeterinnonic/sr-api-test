@@ -2,6 +2,7 @@
 
 namespace App\Domain;
 
+use RuntimeException;
 use function sprintf;
 
 class Runner
@@ -42,6 +43,10 @@ class Runner
         $this->resultRepository = $resultRepository;
     }
 
+    /**
+     * @param Runable $runable
+     * @return void
+     */
     public function run(Runable $runable)
     {
         $route = $runable->getRoute();
@@ -53,7 +58,7 @@ class Runner
 
             $this->resultRepository->save($runable->getName(), self::POST, $postResult);
 
-            $route = $this->decorateRoute($runable, $postResult['id']);
+            $route = $this->decorateRoute($runable, $postResult);
         }
 
         if ($runable->isMethodAvailable(self::PUT)) {
@@ -79,11 +84,17 @@ class Runner
 
     /**
      * @param Runable $runable
-     * @param string $id
+     * @param array $postResult
      * @return string
      */
-    private function decorateRoute(Runable $runable, $id): string
+    private function decorateRoute(Runable $runable, $postResult): string
     {
-        return sprintf('%s/%s', $runable->getRoute(), $id); // hiba kezelés
+        $id = $postResult['id'] ?? null;
+
+        if ($id === null) {
+            throw new RuntimeException('Invalid POST response (the "id" is null): ' . $runable->getName());
+        }
+
+        return sprintf('%s/%s', $runable->getRoute(), $id);
     }
 }
