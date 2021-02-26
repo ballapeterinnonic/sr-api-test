@@ -3,7 +3,7 @@
 namespace App\Console;
 
 use App\Domain\Config;
-use App\Domain\Runable;
+use App\Domain\Runnable;
 use App\Domain\Runner;
 use App\Infrastructure\ConfigLoader;
 use App\Infrastructure\Repository\FilesystemFixtureRepository;
@@ -29,7 +29,7 @@ class Program
 //        $fixtureRepository = new HttpClientFixtureRepository($httpClient);
         $resultRepository = new FilesystemResultRepository(__DIR__ . '/../../var/php7_2');
 
-        $resources = [
+        $runnables = [
 //            'productExtend',
 //            'products',
 //            'orderExtend',
@@ -37,14 +37,14 @@ class Program
 //            'categoryExtend',
 //            'categories',
 //            'customerExtend',
-            'customers' => new Runable('customer', 'customers', ['GET', 'POST', 'PUT', 'DELETE']),
+            'customers' => new Runnable('customer', 'customers', ['GET', 'POST', 'PUT', 'DELETE']),
 //            'urlAliases' => ['name' => 'url_alias', 'methods' => ['POST']],
         ];
 
         $runner = new Runner($fixtureRepository, $resourceRepository, $resultRepository);
 
-        foreach ($resources as $runable) {
-            $runner->run($runable);
+        foreach ($runnables as $runnable) {
+            $runner->run($runnable);
         }
     }
 }

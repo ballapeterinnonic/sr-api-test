@@ -5,7 +5,7 @@ namespace App\Domain;
 use function in_array;
 use function strtoupper;
 
-class Runable
+class Runnable
 {
     /**
      * @var string

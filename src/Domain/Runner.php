@@ -44,57 +44,57 @@ class Runner
     }
 
     /**
-     * @param Runable $runable
+     * @param Runnable $runnable
      * @return void
      */
-    public function run(Runable $runable)
+    public function run(Runnable $runnable)
     {
-        $route = $runable->getRoute();
+        $route = $runnable->getRoute();
 
-        if ($runable->isMethodAvailable(self::POST)) {
-            $fixture = $this->fixtureRepository->get($runable->getName(), self::POST);
+        if ($runnable->isMethodAvailable(self::POST)) {
+            $fixture = $this->fixtureRepository->get($runnable->getName(), self::POST);
 
             $postResult = $this->resourceRepository->post($route, $fixture);
 
-            $this->resultRepository->save($runable->getName(), self::POST, $postResult);
+            $this->resultRepository->save($runnable->getName(), self::POST, $postResult);
 
-            $route = $this->decorateRoute($runable, $postResult);
+            $route = $this->decorateRoute($runnable, $postResult);
         }
 
-        if ($runable->isMethodAvailable(self::PUT)) {
-            $fixture = $this->fixtureRepository->get($runable->getName(), self::PUT);
+        if ($runnable->isMethodAvailable(self::PUT)) {
+            $fixture = $this->fixtureRepository->get($runnable->getName(), self::PUT);
 
             $putResult = $this->resourceRepository->put($route, $fixture);
 
-            $this->resultRepository->save($runable->getName(), self::PUT, $putResult);
+            $this->resultRepository->save($runnable->getName(), self::PUT, $putResult);
         }
 
-        if ($runable->isMethodAvailable(self::GET)) {
+        if ($runnable->isMethodAvailable(self::GET)) {
             $getResult = $this->resourceRepository->get($route);
 
-            $this->resultRepository->save($runable->getName(), self::GET, $getResult);
+            $this->resultRepository->save($runnable->getName(), self::GET, $getResult);
         }
 
-        if ($runable->isMethodAvailable(self::DELETE)) {
+        if ($runnable->isMethodAvailable(self::DELETE)) {
             $deleteResult = $this->resourceRepository->delete($route);
 
-            $this->resultRepository->save($runable->getName(), self::DELETE, $deleteResult);
+            $this->resultRepository->save($runnable->getName(), self::DELETE, $deleteResult);
         }
     }
 
     /**
-     * @param Runable $runable
+     * @param Runnable $runnable
      * @param array $postResult
      * @return string
      */
-    private function decorateRoute(Runable $runable, $postResult): string
+    private function decorateRoute(Runnable $runnable, $postResult): string
     {
         $id = $postResult['id'] ?? null;
 
         if ($id === null) {
-            throw new RuntimeException('Invalid POST response (the "id" is null): ' . $runable->getName());
+            throw new RuntimeException('Invalid POST response (the "id" is null): ' . $runnable->getName());
         }
 
-        return sprintf('%s/%s', $runable->getRoute(), $id);
+        return sprintf('%s/%s', $runnable->getRoute(), $id);
     }
 }
