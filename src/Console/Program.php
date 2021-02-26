@@ -3,13 +3,14 @@
 namespace App\Console;
 
 use App\Domain\Config;
-use App\Domain\ResourceRepositoryInterface;
+use App\Domain\Runable;
+use App\Domain\Runner;
 use App\Infrastructure\ConfigLoader;
-use App\Infrastructure\Fixture\HttpClientFixtureRepository;
+use App\Infrastructure\Repository\FilesystemFixtureRepository;
+use App\Infrastructure\Repository\HttpClientFixtureRepository;
 use App\Infrastructure\HttpClient\CurlHttpClient;
+use App\Infrastructure\Repository\FilesystemResultRepository;
 use App\Infrastructure\Repository\HttpClientResourceRepository;
-use RuntimeException;
-use function var_dump;
 
 class Program
 {
@@ -23,45 +24,27 @@ class Program
         $config = Config::fromArray(ConfigLoader::load(__DIR__ . '/../../config.json'));
 
         $httpClient = new CurlHttpClient();
-
         $resourceRepository = new HttpClientResourceRepository($httpClient, $config);
-        $fixtureRepository = new HttpClientFixtureRepository($httpClient);
+        $fixtureRepository = new FilesystemFixtureRepository(__DIR__ . '/../../fixtures');
+//        $fixtureRepository = new HttpClientFixtureRepository($httpClient);
+        $resultRepository = new FilesystemResultRepository(__DIR__ . '/../../var/php7_2');
 
         $resources = [
-//            'productExtend' => ['name' => 'product_extend', 'methods' => ['POST']],
-//            'productExtend' => ['name' => 'product_extend', 'methods' => ['GET', 'POST', 'PUT', 'DELETE']],
+//            'productExtend',
 //            'products',
 //            'orderExtend',
 //            'orders',
 //            'categoryExtend',
 //            'categories',
 //            'customerExtend',
-//            'customers',
-            'urlAliases' => ['name' => 'url_alias', 'methods' => ['POST']],
+            'customers' => new Runable('customer', 'customers', ['GET', 'POST', 'PUT', 'DELETE']),
+//            'urlAliases' => ['name' => 'url_alias', 'methods' => ['POST']],
         ];
 
-        foreach ($resources as $route => $data) {
-            $fixture = $fixtureRepository->get($data['name'], 'post');
+        $runner = new Runner($fixtureRepository, $resourceRepository, $resultRepository);
 
-            foreach ($data['methods'] as $method) {
-                var_dump(self::call($resourceRepository, $method, $route, $fixture));
-            }
-        }
-    }
-
-    private static function call(ResourceRepositoryInterface $repository, string $method, string $route, array $fixture = [])
-    {
-        switch ($method) {
-            case 'GET':
-                return $repository->get($route);
-            case 'POST':
-                return $repository->post($route, $fixture);
-//            case 'PUT':
-//                return $repository->put($route, $fixture);
-//            case 'DELETE':
-//                return $repository->delete($route);
-            default:
-                throw new RuntimeException('Invalid method given: ' . $method);
+        foreach ($resources as $runable) {
+            $runner->run($runable);
         }
     }
 }
