@@ -11,6 +11,7 @@ use App\Infrastructure\Repository\HttpClientFixtureRepository;
 use App\Infrastructure\HttpClient\CurlHttpClient;
 use App\Infrastructure\Repository\FilesystemResultRepository;
 use App\Infrastructure\Repository\HttpClientResourceRepository;
+use function dirname;
 
 class Program
 {
@@ -21,22 +22,24 @@ class Program
      */
     public static function main(array $args)
     {
-        $config = Config::fromArray(ConfigLoader::load(__DIR__ . '/../../config.json'));
+        $rootDir = dirname(__DIR__, 2);
+
+        $config = Config::fromArray(ConfigLoader::load($rootDir . '/config.json'));
 
         $httpClient = new CurlHttpClient();
         $resourceRepository = new HttpClientResourceRepository($httpClient, $config);
-        $fixtureRepository = new FilesystemFixtureRepository(__DIR__ . '/../../fixtures');
+        $fixtureRepository = new FilesystemFixtureRepository($rootDir . '/fixtures');
 //        $fixtureRepository = new HttpClientFixtureRepository($httpClient);
-        $resultRepository = new FilesystemResultRepository(__DIR__ . '/../../var/php7_2');
+        $resultRepository = new FilesystemResultRepository($rootDir . '/var/php7_2');
 
         $runnables = [
 //            'productExtend',
 //            'products',
 //            'orderExtend',
-//            'orders',
+            'orders' => new Runnable('order', 'orders', ['GET', 'POST', 'PUT', 'DELETE']),
 //            'categoryExtend',
 //            'categories',
-//            'customerExtend',
+            'customerExtend' => new Runnable('customer_extend', 'customerExtend', ['GET', 'POST', 'PUT', 'DELETE']),
             'customers' => new Runnable('customer', 'customers', ['GET', 'POST', 'PUT', 'DELETE']),
 //            'urlAliases' => ['name' => 'url_alias', 'methods' => ['POST']],
         ];
