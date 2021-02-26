@@ -7,6 +7,7 @@ use function curl_exec;
 use function curl_init;
 use function curl_setopt_array;
 use function json_decode;
+use function json_encode;
 use const CURLOPT_CUSTOMREQUEST;
 use const CURLOPT_ENCODING;
 use const CURLOPT_FOLLOWLOCATION;
@@ -34,6 +35,23 @@ class CurlHttpClient implements HttpClientInterface
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => $headers,
+        ]);
+
+        return json_decode($response, true);
+    }
+
+    public function post(string $url, array $headers, array $payload)
+    {
+        $response = self::exec([
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_HTTPHEADER => $headers,
+            CURLOPT_POSTFIELDS => json_encode($payload),
         ]);
 
         return json_decode($response, true);

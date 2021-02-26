@@ -10,4 +10,12 @@ interface HttpClientInterface
      * @return array
      */
     public function get(string $url, array $headers);
+
+    /**
+     * @param string $url
+     * @param array $headers
+     * @param array $payload
+     * @return array
+     */
+    public function post(string $url, array $headers, array $payload);
 }

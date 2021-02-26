@@ -45,6 +45,21 @@ class HttpClientResourceRepository implements ResourceRepositoryInterface
         ]);
     }
 
+    public function post(string $name, array $payload)
+    {
+        $url = sprintf('%s/%s', $this->config->getUrl(), $name);
+
+        return $this->httpClient->post(
+            $url,
+            [
+                'Accept: application/json',
+                'Content-Type: application/json',
+                sprintf('Authorization: Basic %s', self::encodeAuth($this->config->getAuth())),
+            ],
+            $payload
+        );
+    }
+
     /**
      * @param array $auth
      * @return string
