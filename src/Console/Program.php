@@ -2,7 +2,9 @@
 
 namespace App\Console;
 
+use function base64_encode;
 use function json_decode;
+use function sprintf;
 use const CURL_HTTP_VERSION_1_1;
 use const CURLOPT_CUSTOMREQUEST;
 use const CURLOPT_ENCODING;
@@ -22,8 +24,10 @@ class Program
      */
     public static function main(array $args)
     {
+        $config = ConfigLoader::load(__DIR__ . '/../../config.json');
+
         $response = Curl::exec([
-            CURLOPT_URL => 'http://demo.api.aurora.tnorbi/products',
+            CURLOPT_URL => sprintf('%s/products', $config['url']),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -33,10 +37,19 @@ class Program
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => [
                 'Accept: application/json',
-                'Authorization: Basic Y29kZWNlcHRpb246YzZmZWExM2I4OTY3NWQyYTlhMjIxMmQ1NTliOGY4ZjI=',
+                sprintf('Authorization: Basic %s', self::getAuth($config['auth'])),
             ],
         ]);
 
         \var_dump(json_decode($response, true));
+    }
+
+    /**
+     * @param array $auth
+     * @return string
+     */
+    private static function getAuth($auth)
+    {
+         return base64_encode(sprintf('%s:%s', $auth['username'], $auth['password']));
     }
 }
