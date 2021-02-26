@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console;
+namespace App\Infrastructure;
 
 use RuntimeException;
 use function file_exists;
