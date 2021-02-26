@@ -1,0 +1,57 @@
+{
+  "sku": "KOTELEZO-1",
+  "modelNumber": "0",
+  "cost": "4321.123",
+  "orderable": "1",
+  "price": "56000.0000",
+  "multiplier": "1.0000",
+  "multiplierLock": "0",
+  "loyaltyPoints": 40,
+  "stock1": "20",
+  "stock2": "10",
+  "subtractStock": "1",
+  "mainPicture": "image.jpg",
+  "width": "50.12",
+  "height": "40.67",
+  "length": "40.21",
+  "weight": "67.88",
+  "status": "1",
+  "shipped": "1",
+  "minimalOrderNumber": "1",
+  "maximalOrderNumber": "100",
+  "minimalOrderNumberMultiply": "0",
+  "availableDate": "2021-02-01",
+  "quantity": "32.0000",
+  "sortOrder": "69",
+  "freeShipping": "1",
+  "taxClass": {
+    "id": "dGF4Q2xhc3MtdGF4X2NsYXNzX2lkPTEw"
+  },
+  "noStockStatus": {
+    "id": "c3RvY2tTdGF0dXMtc3RvY2tfc3RhdHVzX2lkPTU="
+  },
+  "inStockStatus": {
+    "id": "c3RvY2tTdGF0dXMtc3RvY2tfc3RhdHVzX2lkPTk="
+  },
+  "onlyStock1Status": {
+    "id": "c3RvY2tTdGF0dXMtc3RvY2tfc3RhdHVzX2lkPTk="
+  },
+  "onlyStock2Status": {
+    "id": "c3RvY2tTdGF0dXMtc3RvY2tfc3RhdHVzX2lkPTk="
+  },
+  "productClass": {
+    "id": "cHJvZHVjdENsYXNzLXByb2R1Y3RfY2xhc3NfaWQ9MQ=="
+  },
+  "parentProduct": {
+    "id": "cHJvZHVjdC1wcm9kdWN0X2lkPTI0NTE="
+  },
+  "volumeUnit": {
+    "id": "bGVuZ3RoQ2xhc3MtbGVuZ3RoX2NsYXNzX2lkPTE="
+  },
+  "weightUnit": {
+    "id": "d2VpZ2h0Q2xhc3Mtd2VpZ2h0X2NsYXNzX2lkPTE="
+  },
+  "manufacturer": {
+    "id": "bWFudWZhY3R1cmVyLW1hbnVmYWN0dXJlcl9pZD0y"
+  }
+}
