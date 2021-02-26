@@ -10,3 +10,8 @@
     }
 }
 ```
+
+**Compare two files with folder/file**
+```
+diff -u dir1.txt dir2.txt
+```
