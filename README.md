@@ -15,7 +15,3 @@
 ```
 diff -u dir1.txt dir2.txt
 ```
-
-**Settings before every running**
-
-1. Give a unique sku to the post and put request of the product and product_extend fixtures.

@@ -41,7 +41,7 @@ class Program
             'categories' => new Runnable('category', 'categories', ['GET', 'POST', 'PUT', 'DELETE']),
             'customerExtend' => new Runnable('customer_extend', 'customerExtend', ['GET', 'POST', 'PUT', 'DELETE']),
             'customers' => new Runnable('customer', 'customers', ['GET', 'POST', 'PUT', 'DELETE']),
-//            'urlAliases' => ['name' => 'url_alias', 'methods' => ['POST']],
+            'urlAliases' => new Runnable('url_alias', 'urlAliases', ['GET', 'POST', 'PUT', 'DELETE']),
         ];
 
         $runner = new Runner($fixtureRepository, $resourceRepository, $resultRepository);
