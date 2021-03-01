@@ -1,0 +1,102 @@
+{
+  "stock1": "30",
+  "stock2": "45",
+  "sku": "ABCD-1234566",
+  "price": "4500",
+  "manufacturer": {
+    "name": "Manufacturer name",
+    "picture": "image.jpg",
+    "sortOrder": 0,
+    "robotsMetaTag": 0
+  },
+  "productDescriptions": [
+    {
+      "name": "Termék Név PUT",
+      "shortDescription": "Rövid Leírás",
+      "description": "Hosszú Leírás",
+      "language": {
+        "id": "bGFuZ3VhZ2UtbGFuZ3VhZ2VfaWQ9MQ=="
+      }
+    },
+    {
+      "name": "Product Name PUT",
+      "shortDescription": "Short Description",
+      "description": "Long Description",
+      "language": {
+        "id": "bGFuZ3VhZ2UtbGFuZ3VhZ2VfaWQ9Mg=="
+      }
+    }
+  ],
+  "productSpecials": [
+    {
+      "price": "1000"
+    },
+    {
+      "price": "2000"
+    }
+  ],
+  "productCategoryRelations": [
+    {
+      "category": {
+        "id": "Y2F0ZWdvcnktY2F0ZWdvcnlfaWQ9NTU="
+      }
+    },
+    {
+      "category": {
+        "id": "Y2F0ZWdvcnktY2F0ZWdvcnlfaWQ9NTM="
+      }
+    },
+    {
+      "category": {
+        "id": "Y2F0ZWdvcnktY2F0ZWdvcnlfaWQ9NTQ="
+      }
+    }
+  ],
+  "productRelatedProductRelations": [
+    {
+      "relatedProduct": {
+        "id": "cHJvZHVjdC1wcm9kdWN0X2lkPTE0OQ=="
+      }
+    }
+  ],
+  "productProductBadgeRelations": [
+    {
+      "productBadge": {
+        "id": "cHJvZHVjdEJhZGdlLWJhZGdlX2lkPTE="
+      }
+    }
+  ],
+  "productTags": [
+    {
+      "language": {
+        "id": "bGFuZ3VhZ2UtbGFuZ3VhZ2VfaWQ9MQ=="
+      },
+      "tags": "valami1, valami2, valami3"
+    }
+  ],
+  "productCollateralProductRelations": [
+    {
+      "collateralProduct": {
+        "id": "cHJvZHVjdC1wcm9kdWN0X2lkPTEyMA=="
+      }
+    },
+    {
+      "collateralProduct": {
+        "id": "cHJvZHVjdC1wcm9kdWN0X2lkPTExOQ=="
+      }
+    },
+    {
+      "collateralProduct": {
+        "id": "cHJvZHVjdC1wcm9kdWN0X2lkPTExOA=="
+      }
+    }
+  ],
+  "customerGroupProductPrices": [
+    {
+      "customerGroup": {
+        "id": "Y3VzdG9tZXJHcm91cC1jdXN0b21lcl9ncm91cF9pZD0xMw=="
+      },
+      "price": "1200"
+    }
+  ]
+}

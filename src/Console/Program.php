@@ -33,8 +33,8 @@ class Program
         $resultRepository = new FilesystemResultRepository($rootDir . '/var/php7_2');
 
         $runnables = [
-//            'productExtend',
-//            'products',
+            'productExtend' => new Runnable('product_extend', 'productExtend', ['GET', 'POST', 'PUT', 'DELETE']),
+            'products' => new Runnable('product', 'products', ['GET', 'POST', 'PUT', 'DELETE']),
 //            'orderExtend',
             'orders' => new Runnable('order', 'orders', ['GET', 'POST', 'PUT', 'DELETE']),
 //            'categoryExtend',
