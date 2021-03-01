@@ -18,4 +18,4 @@ diff -u dir1.txt dir2.txt
 
 **Settings before every running**
 
-1. Change the fixtures/product/post.json sku property. It will be the same in the fixtures/product/put.json 
+1. Give a unique sku to the post and put request of the product and product_extend fixtures.
