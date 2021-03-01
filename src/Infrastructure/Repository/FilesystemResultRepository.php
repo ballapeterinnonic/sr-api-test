@@ -44,6 +44,19 @@ class FilesystemResultRepository implements ResultRepositoryInterface
             $dir->create();
         }
 
-        file_put_contents($file, json_encode($payload, JSON_PRETTY_PRINT));
+        file_put_contents($file, self::replace(json_encode($payload, JSON_PRETTY_PRINT)));
+    }
+
+    /**
+     * @param string $subject
+     * @return string
+     */
+    private static function replace(string $subject)
+    {
+        $today = \date("Y-m-d");
+        $pattern = \sprintf('/"%sT..:..:.."/i', $today);
+        $replacement = '"2021-01-01T12:00:00"';
+
+        return \preg_replace($pattern, $replacement, $subject);
     }
 }
