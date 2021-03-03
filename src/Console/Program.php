@@ -42,6 +42,8 @@ class Program
             'customers' => new Runnable('customer', 'customers', ['GET', 'POST', 'PUT', 'DELETE']),
             'urlAliases' => new Runnable('url_alias', 'urlAliases', ['GET', 'POST', 'PUT', 'DELETE']),
             'attributeDescriptions' => new Runnable('attribute_description', 'attributeDescriptions', ['GET', 'POST', 'PUT', 'DELETE']),
+            'attributeWidgetCategoryRelations' => new Runnable('attribute_widget_category_relation', 'attributeWidgetCategoryRelations', ['GET', 'POST', 'PUT', 'DELETE']),
+            'attributeWidgetDescriptions' => new Runnable('attribute_widget_description', 'attributeWidgetDescriptions', ['GET', 'POST', 'PUT', 'DELETE']),
         ];
 
         $runner = new Runner($fixtureRepository, $resourceRepository, $resultRepository);
