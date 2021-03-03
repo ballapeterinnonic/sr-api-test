@@ -44,6 +44,10 @@ class Program
             'attributeDescriptions' => new Runnable('attribute_description', 'attributeDescriptions', ['GET', 'POST', 'PUT', 'DELETE']),
             'attributeWidgetCategoryRelations' => new Runnable('attribute_widget_category_relation', 'attributeWidgetCategoryRelations', ['GET', 'POST', 'PUT', 'DELETE']),
             'attributeWidgetDescriptions' => new Runnable('attribute_widget_description', 'attributeWidgetDescriptions', ['GET', 'POST', 'PUT', 'DELETE']),
+            'listAttributes' => new Runnable('list_attributes', 'listAttributes', ['GET', 'POST', 'PUT', 'DELETE']),
+            'listAttributeValues' => new Runnable('list_attribute_values', 'listAttributeValues', ['GET', 'POST', 'PUT', 'DELETE']),
+            'listAttributeValueDescriptions' => new Runnable('list_attribute_value_descriptions', 'listAttributeValueDescriptions', ['GET', 'POST', 'PUT', 'DELETE']),
+            'listAttributeWidgets' => new Runnable('list_attribute_widgets', 'listAttributeWidgets', ['GET', 'POST', 'PUT', 'DELETE']),
         ];
 
         $runner = new Runner($fixtureRepository, $resourceRepository, $resultRepository);
