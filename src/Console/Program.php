@@ -52,6 +52,9 @@ class Program
             'numberAttributeValues' => new Runnable('number_attribute_value', 'numberAttributeValues', ['GET', 'POST', 'PUT', 'DELETE']),
             'numberAttributeWidgets' => new Runnable('number_attribute_widget', 'numberAttributeWidgets', ['GET', 'POST', 'PUT', 'DELETE']),
             'numberAttributeWidgetLimits' => new Runnable('number_attribute_widget_limit', 'numberAttributeWidgetLimits', ['GET', 'POST', 'PUT', 'DELETE']),
+            'textAttributes' => new Runnable('text_attribute', 'textAttributes', ['GET', 'POST', 'PUT', 'DELETE']),
+            'textAttributeValues' => new Runnable('text_attribute_value', 'textAttributeValues', ['GET', 'POST', 'PUT', 'DELETE']),
+            'textAttributeValueDescriptions' => new Runnable('text_attribute_value_description', 'textAttributeValueDescriptions', ['GET', 'POST', 'PUT', 'DELETE']),
         ];
 
         $runner = new Runner($fixtureRepository, $resourceRepository, $resultRepository);
