@@ -15,3 +15,15 @@
 ```
 diff -u dir1.txt dir2.txt
 ```
+
+**Running console command**
+
+```
+php bin/console [foldername]
+```
+
+e.g:
+
+```
+php bin/console php_7_0
+```
