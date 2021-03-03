@@ -28,9 +28,9 @@ class Program
 
         $httpClient = new CurlHttpClient();
         $resourceRepository = new HttpClientResourceRepository($httpClient, $config);
-        $fixtureRepository = new FilesystemFixtureRepository($rootDir . '/fixtures');
-//        $fixtureRepository = new HttpClientFixtureRepository($httpClient);
-        $resultRepository = new FilesystemResultRepository($rootDir . '/var/php7_2');
+//        $fixtureRepository = new FilesystemFixtureRepository($rootDir . '/fixtures');
+        $fixtureRepository = new HttpClientFixtureRepository($httpClient);
+        $resultRepository = new FilesystemResultRepository($rootDir . '/var/php7_0');
 
         $runnables = [
             'productExtend' => new Runnable('product_extend', 'productExtend', ['GET', 'POST', 'PUT', 'DELETE']),
