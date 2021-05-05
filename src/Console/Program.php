@@ -30,18 +30,21 @@ class Program
         $resourceRepository = new HttpClientResourceRepository($httpClient, $config);
 //        $fixtureRepository = new FilesystemFixtureRepository($rootDir . '/fixtures');
         $fixtureRepository = new HttpClientFixtureRepository($httpClient);
-        $resultRepository = new FilesystemResultRepository($rootDir . '/var/php7_0');
+        $resultRepository = new FilesystemResultRepository($rootDir . '/var/php7_4');
 
         $runnables = [
-            'productExtend' => new Runnable('product_extend', 'productExtend', ['GET', 'POST', 'PUT', 'DELETE']),
-            'products' => new Runnable('product', 'products', ['GET', 'POST', 'PUT', 'DELETE']),
-            'orders' => new Runnable('order', 'orders', ['GET', 'POST', 'PUT', 'DELETE']),
-            'categoryExtend' => new Runnable('category_extend', 'categoryExtend', ['GET', 'POST', 'PUT', 'DELETE']),
-            'categories' => new Runnable('category', 'categories', ['GET', 'POST', 'PUT', 'DELETE']),
-            'customerExtend' => new Runnable('customer_extend', 'customerExtend', ['GET', 'POST', 'PUT', 'DELETE']),
-            'customers' => new Runnable('customer', 'customers', ['GET', 'POST', 'PUT', 'DELETE']),
-            'urlAliases' => new Runnable('url_alias', 'urlAliases', ['GET', 'POST', 'PUT', 'DELETE']),
-            'attributeDescriptions' => new Runnable('attribute_description', 'attributeDescriptions', ['GET', 'POST', 'PUT', 'DELETE']),
+            //ONLY WORKS WITH FilesystemResultRepository
+//            'productExtend' => new Runnable('product_extend', 'productExtend', ['GET', 'POST', 'PUT', 'DELETE']),
+//            'products' => new Runnable('product', 'products', ['GET', 'POST', 'PUT', 'DELETE']),
+//            'orders' => new Runnable('order', 'orders', ['GET', 'POST', 'PUT', 'DELETE']),
+//            'categoryExtend' => new Runnable('category_extend', 'categoryExtend', ['GET', 'POST', 'PUT', 'DELETE']),
+//            'categories' => new Runnable('category', 'categories', ['GET', 'POST', 'PUT', 'DELETE']),
+//            'customerExtend' => new Runnable('customer_extend', 'customerExtend', ['GET', 'POST', 'PUT', 'DELETE']),
+//            'customers' => new Runnable('customer', 'customers', ['GET', 'POST', 'PUT', 'DELETE']),
+//            'urlAliases' => new Runnable('url_alias', 'urlAliases', ['GET', 'POST', 'PUT', 'DELETE']),
+//            'attributeDescriptions' => new Runnable('attribute_description', 'attributeDescriptions', ['GET', 'POST', 'PUT', 'DELETE']),
+
+        //ONLY WORKS WITH HttpClientFixtureRepository
             'attributeWidgetCategoryRelations' => new Runnable('attribute_widget_category_relation', 'attributeWidgetCategoryRelations', ['GET', 'POST', 'PUT', 'DELETE']),
             'attributeWidgetDescriptions' => new Runnable('attribute_widget_description', 'attributeWidgetDescriptions', ['GET', 'POST', 'PUT', 'DELETE']),
             'listAttributes' => new Runnable('list_attribute', 'listAttributes', ['GET', 'POST', 'PUT', 'DELETE']),
